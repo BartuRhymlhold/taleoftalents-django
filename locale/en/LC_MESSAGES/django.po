@@ -1,0 +1,188 @@
+# English translations for Tale of Talents.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tale of Talents\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: django-admin makemessages\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Tale of Talents"
+msgstr "Tale of Talents"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Talents"
+msgstr "Talents"
+
+msgid "About"
+msgstr "About"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Premium Hospitality Talent Platform"
+msgstr "Premium Hospitality Talent Platform"
+
+msgid "Where Hospitality"
+msgstr "Where Hospitality"
+
+msgid "Dreams Come True"
+msgstr "Dreams Come True"
+
+msgid "Connect with the world's most exclusive hotels and entertainment venues. Your talent deserves the spotlight it was meant for."
+msgstr "Connect with the world's most exclusive hotels and entertainment venues. Your talent deserves the spotlight it was meant for."
+
+msgid "Start Your Journey"
+msgstr "Start Your Journey"
+
+msgid "Explore Talent"
+msgstr "Explore Talent"
+
+msgid "Verified Talents"
+msgstr "Verified Talents"
+
+msgid "Partner Hotels"
+msgstr "Partner Hotels"
+
+msgid "Countries"
+msgstr "Countries"
+
+msgid "Featured Professionals"
+msgstr "Featured Professionals"
+
+msgid "Meet Our"
+msgstr "Meet Our"
+
+msgid "Star Talents"
+msgstr "Star Talents"
+
+msgid "Discover exceptional professionals who are making waves in the hospitality and entertainment industry"
+msgstr "Discover exceptional professionals who are making waves in the hospitality and entertainment industry"
+
+msgid "View Profile"
+msgstr "View Profile"
+
+msgid "Discover All Talents"
+msgstr "Discover All Talents"
+
+msgid "Join the Elite"
+msgstr "Join the Elite"
+
+msgid "Ready to Elevate Your"
+msgstr "Ready to Elevate Your"
+
+msgid "Hospitality Career?"
+msgstr "Hospitality Career?"
+
+msgid "Join thousands of hospitality professionals who have transformed their careers through our exclusive platform. Your dream opportunity is waiting."
+msgstr "Join thousands of hospitality professionals who have transformed their careers through our exclusive platform. Your dream opportunity is waiting."
+
+msgid "Start Your Journey Today"
+msgstr "Start Your Journey Today"
+
+msgid "professionals already joined"
+msgstr "professionals already joined"
+
+msgid "Discover Amazing Talent"
+msgstr "Discover Amazing Talent"
+
+msgid "Browse our verified professionals in hospitality and entertainment, ready to bring their skills to your venue."
+msgstr "Browse our verified professionals in hospitality and entertainment, ready to bring their skills to your venue."
+
+msgid "Search talents..."
+msgstr "Search talents..."
+
+msgid "All Talent Types"
+msgstr "All Talent Types"
+
+msgid "All Types"
+msgstr "All Types"
+
+msgid "All Genders"
+msgstr "All Genders"
+
+msgid "All Locations"
+msgstr "All Locations"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Showing"
+msgstr "Showing"
+
+msgid "talents"
+msgstr "talents"
+
+msgid "(filtered)"
+msgstr "(filtered)"
+
+msgid "Clear all filters"
+msgstr "Clear all filters"
+
+msgid "No talents found"
+msgstr "No talents found"
+
+msgid "Try adjusting your search criteria or browse all our amazing talents."
+msgstr "Try adjusting your search criteria or browse all our amazing talents."
+
+msgid "Clear Filters"
+msgstr "Clear Filters"
+
+msgid "Moderator Dashboard"
+msgstr "Moderator Dashboard"
+
+msgid "Review and manage talent applications"
+msgstr "Review and manage talent applications"
+
+msgid "Total Applications"
+msgstr "Total Applications"
+
+msgid "Pending Review"
+msgstr "Pending Review"
+
+msgid "Approved"
+msgstr "Approved"
+
+msgid "Rejected"
+msgstr "Rejected"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Search by ID, name, email, or city..."
+msgstr "Search by ID, name, email, or city..."
+
+msgid "All Status"
+msgstr "All Status"
+
+msgid "Pending"
+msgstr "Pending"
+
+msgid "All Roles"
+msgstr "All Roles"
+
+msgid "Talent Applications"
+msgstr "Talent Applications"
+
+msgid "No applications found"
+msgstr "No applications found"
+
+msgid "Try adjusting your search criteria or browse all applications."
+msgstr "Try adjusting your search criteria or browse all applications." 

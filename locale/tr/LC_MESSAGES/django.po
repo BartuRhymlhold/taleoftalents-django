@@ -1,0 +1,188 @@
+# Turkish translations for Tale of Talents.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tale of Talents\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: django-admin makemessages\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Tale of Talents"
+msgstr "Yetenek Masalları"
+
+msgid "Home"
+msgstr "Ana Sayfa"
+
+msgid "Talents"
+msgstr "Yetenekler"
+
+msgid "About"
+msgstr "Hakkında"
+
+msgid "Sign In"
+msgstr "Giriş Yap"
+
+msgid "Register"
+msgstr "Kayıt Ol"
+
+msgid "Dashboard"
+msgstr "Kontrol Paneli"
+
+msgid "Logout"
+msgstr "Çıkış Yap"
+
+msgid "Premium Hospitality Talent Platform"
+msgstr "Premium Misafirperverlik Yetenek Platformu"
+
+msgid "Where Hospitality"
+msgstr "Misafirperverliğin"
+
+msgid "Dreams Come True"
+msgstr "Hayallerin Gerçekleştiği Yer"
+
+msgid "Connect with the world's most exclusive hotels and entertainment venues. Your talent deserves the spotlight it was meant for."
+msgstr "Dünyanın en seçkin otelleri ve eğlence mekanlarıyla bağlantı kurun. Yeteneğiniz hak ettiği spot ışığını bulacak."
+
+msgid "Start Your Journey"
+msgstr "Yolculuğunuza Başlayın"
+
+msgid "Explore Talent"
+msgstr "Yetenekleri Keşfedin"
+
+msgid "Verified Talents"
+msgstr "Doğrulanmış Yetenekler"
+
+msgid "Partner Hotels"
+msgstr "Ortak Oteller"
+
+msgid "Countries"
+msgstr "Ülkeler"
+
+msgid "Featured Professionals"
+msgstr "Öne Çıkan Profesyoneller"
+
+msgid "Meet Our"
+msgstr "Tanışın"
+
+msgid "Star Talents"
+msgstr "Yıldız Yeteneklerimizle"
+
+msgid "Discover exceptional professionals who are making waves in the hospitality and entertainment industry"
+msgstr "Misafirperverlik ve eğlence sektöründe fark yaratan olağanüstü profesyonelleri keşfedin"
+
+msgid "View Profile"
+msgstr "Profili Görüntüle"
+
+msgid "Discover All Talents"
+msgstr "Tüm Yetenekleri Keşfedin"
+
+msgid "Join the Elite"
+msgstr "Elite Gruba Katılın"
+
+msgid "Ready to Elevate Your"
+msgstr "Misafirperverlik Kariyerinizi"
+
+msgid "Hospitality Career?"
+msgstr "Yükseltmeye Hazır mısınız?"
+
+msgid "Join thousands of hospitality professionals who have transformed their careers through our exclusive platform. Your dream opportunity is waiting."
+msgstr "Özel platformumuz aracılığıyla kariyerlerini dönüştüren binlerce misafirperverlik profesyoneline katılın. Hayalinizdeki fırsat sizi bekliyor."
+
+msgid "Start Your Journey Today"
+msgstr "Bugün Yolculuğunuza Başlayın"
+
+msgid "professionals already joined"
+msgstr "profesyonel zaten katıldı"
+
+msgid "Discover Amazing Talent"
+msgstr "Harika Yetenekleri Keşfedin"
+
+msgid "Browse our verified professionals in hospitality and entertainment, ready to bring their skills to your venue."
+msgstr "Misafirperverlik ve eğlence alanında doğrulanmış profesyonellerimizi keşfedin, yeteneklerini mekanınıza getirmeye hazırlar."
+
+msgid "Search talents..."
+msgstr "Yetenek ara..."
+
+msgid "All Talent Types"
+msgstr "Tüm Yetenek Türleri"
+
+msgid "All Types"
+msgstr "Tüm Türler"
+
+msgid "All Genders"
+msgstr "Tüm Cinsiyetler"
+
+msgid "All Locations"
+msgstr "Tüm Konumlar"
+
+msgid "Search"
+msgstr "Ara"
+
+msgid "Showing"
+msgstr "Gösteriliyor"
+
+msgid "talents"
+msgstr "yetenek"
+
+msgid "(filtered)"
+msgstr "(filtrelenmiş)"
+
+msgid "Clear all filters"
+msgstr "Tüm filtreleri temizle"
+
+msgid "No talents found"
+msgstr "Yetenek bulunamadı"
+
+msgid "Try adjusting your search criteria or browse all our amazing talents."
+msgstr "Arama kriterlerinizi ayarlamayı deneyin veya tüm harika yeteneklerimizi keşfedin."
+
+msgid "Clear Filters"
+msgstr "Filtreleri Temizle"
+
+msgid "Moderator Dashboard"
+msgstr "Moderatör Kontrol Paneli"
+
+msgid "Review and manage talent applications"
+msgstr "Yetenek başvurularını inceleyin ve yönetin"
+
+msgid "Total Applications"
+msgstr "Toplam Başvuru"
+
+msgid "Pending Review"
+msgstr "İnceleme Bekleyen"
+
+msgid "Approved"
+msgstr "Onaylanan"
+
+msgid "Rejected"
+msgstr "Reddedilen"
+
+msgid "Public"
+msgstr "Herkese Açık"
+
+msgid "Search by ID, name, email, or city..."
+msgstr "ID, isim, e-posta veya şehir ile ara..."
+
+msgid "All Status"
+msgstr "Tüm Durumlar"
+
+msgid "Pending"
+msgstr "Bekleyen"
+
+msgid "All Roles"
+msgstr "Tüm Roller"
+
+msgid "Talent Applications"
+msgstr "Yetenek Başvuruları"
+
+msgid "No applications found"
+msgstr "Başvuru bulunamadı"
+
+msgid "Try adjusting your search criteria or browse all applications."
+msgstr "Arama kriterlerinizi ayarlamayı deneyin veya tüm başvuruları keşfedin." 

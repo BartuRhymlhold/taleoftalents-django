@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div class="text-center">
+        <div class="mb-8">
+            <h1 class="text-6xl font-bold text-gray-300 mb-4">404</h1>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Talent Profile Not Found</h2>
+            <p class="text-gray-600 mb-8">
+                The talent profile you're looking for doesn't exist or is not publicly available.
+            </p>
+        </div>
+        
+        <div class="space-y-4">
+            <a href="{% url 'talent_showcase' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Browse All Talents
+            </a>
+            <br>
+            <a href="{% url 'home' %}" class="inline-block text-blue-600 hover:text-blue-500">
+                Return to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

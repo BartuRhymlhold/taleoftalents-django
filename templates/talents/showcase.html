@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                {% trans "Discover Amazing Talent" %}
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                {% trans "Browse our verified professionals in hospitality and entertainment, ready to bring their skills to your venue." %}
+            </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <form method="get" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                <div class="relative">
+                    <svg class="absolute left-3 top-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="{% trans "Search talents..." %}"
+                        value="{{ search_term }}"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                </div>
+
+                <div class="relative">
+                    <svg class="absolute left-3 top-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z"></path>
+                    </svg>
+                    <select
+                        name="role"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                        <option value="all">{% trans "All Talent Types" %}</option>
+                        {% for role_value, role_label in talent_roles %}
+                            <option value="{{ role_value }}" {% if role_filter == role_value %}selected{% endif %}>
+                                {% if role_value == 'dancer' %}💃
+                                {% elif role_value == 'acrobat' %}🤸
+                                {% elif role_value == 'performer' %}🎭
+                                {% elif role_value == 'musician' %}🎵
+                                {% elif role_value == 'entertainer' %}🎪
+                                {% elif role_value == 'bar_service' %}🍸
+                                {% endif %} {{ role_label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="relative">
+                    <svg class="absolute left-3 top-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <select
+                        name="registration_type"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                        <option value="all">{% trans "All Types" %}</option>
+                        {% for type_value, type_label in registration_types %}
+                            <option value="{{ type_value }}" {% if registration_type_filter == type_value %}selected{% endif %}>
+                                {% if type_value == 'personal' %}👤
+                                {% elif type_value == 'group' %}👥
+                                {% endif %} {{ type_label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="relative">
+                    <svg class="absolute left-3 top-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <select
+                        name="gender"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                        <option value="all">{% trans "All Genders" %}</option>
+                        {% for gender_value, gender_label in gender_choices %}
+                            <option value="{{ gender_value }}" {% if gender_filter == gender_value %}selected{% endif %}>
+                                {{ gender_label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="relative">
+                    <svg class="absolute left-3 top-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <select
+                        name="location"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                    >
+                        <option value="all">{% trans "All Locations" %}</option>
+                        {% for location in unique_locations %}
+                            <option value="{{ location }}" {% if location_filter == location %}selected{% endif %}>{{ location }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="flex items-center">
+                    <button type="submit" class="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        {% trans "Search" %}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Count -->
+        <div class="mb-6">
+            <div class="flex items-center justify-between">
+                <p class="text-gray-600">
+                    {% trans "Showing" %} {{ talents|length }} {% trans "talents" %}
+                    {% if search_term or role_filter != 'all' or registration_type_filter != 'all' or gender_filter != 'all' or location_filter != 'all' %}
+                        <span class="text-gray-400">({% trans "filtered" %})</span>
+                    {% endif %}
+                </p>
+                {% if search_term or role_filter != 'all' or registration_type_filter != 'all' or gender_filter != 'all' or location_filter != 'all' %}
+                    <a href="{% url 'talent_showcase' %}" class="text-blue-600 hover:text-blue-500 text-sm">
+                        {% trans "Clear all filters" %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Talent Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for talent in talents %}
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                    <div class="relative">
+                        {% if talent.profile_image %}
+                            <img
+                                src="{{ talent.profile_image.url }}"
+                                alt="{{ talent.display_name }}"
+                                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                        {% else %}
+                            <div class="w-full h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                <span class="text-white text-4xl">
+                                    {% if talent.role == 'dancer' %}💃
+                                    {% elif talent.role == 'acrobat' %}🤸
+                                    {% elif talent.role == 'performer' %}🎭
+                                    {% elif talent.role == 'musician' %}🎵
+                                    {% elif talent.role == 'entertainer' %}🎪
+                                    {% elif talent.role == 'bar_service' %}🍸
+                                    {% endif %}
+                                </span>
+                            </div>
+                        {% endif %}
+                        
+                        <!-- Role Badge -->
+                        <div class="absolute top-4 left-4 bg-white rounded-full px-3 py-1 shadow-md">
+                            <span class="text-sm font-medium flex items-center">
+                                <span class="mr-1">
+                                    {% if talent.role == 'dancer' %}💃
+                                    {% elif talent.role == 'acrobat' %}🤸
+                                    {% elif talent.role == 'performer' %}🎭
+                                    {% elif talent.role == 'musician' %}🎵
+                                    {% elif talent.role == 'entertainer' %}🎪
+                                    {% elif talent.role == 'bar_service' %}🍸
+                                    {% endif %}
+                                </span>
+                                {{ talent.get_role_display }}
+                            </span>
+                        </div>
+
+                        <!-- Video Badge -->
+                        {% if talent.videos.exists %}
+                            <div class="absolute top-4 right-4 bg-black bg-opacity-70 text-white rounded-full p-2 hover:bg-opacity-90 transition-colors cursor-pointer">
+                                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        {% endif %}
+
+                        <!-- Experience Badge -->
+                        <div class="absolute bottom-4 right-4 bg-blue-600 text-white rounded-full px-3 py-1 text-sm font-medium">
+                            <svg class="inline mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            {{ talent.experience }}
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-semibold text-gray-800">{{ talent.public_id }}</h3>
+                            <div class="flex items-center text-yellow-500">
+                                {% for i in "12345" %}
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                                    </svg>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="text-2xl">
+                                {% if talent.role == 'dancer' %}💃
+                                {% elif talent.role == 'acrobat' %}🤸
+                                {% elif talent.role == 'performer' %}🎭
+                                {% elif talent.role == 'musician' %}🎵
+                                {% elif talent.role == 'entertainer' %}🎪
+                                {% elif talent.role == 'bar_service' %}🍸
+                                {% endif %}
+                            </span>
+                            <span class="text-blue-600 font-medium">{{ talent.get_role_display }}</span>
+                            {% if talent.registration_type == 'group' %}
+                                <span class="text-green-600 text-sm">👥 {% trans "Group" %}</span>
+                            {% endif %}
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-600">{{ talent.city }}</span>
+                        </div>
+
+                        <p class="text-gray-700 text-sm mb-4 line-clamp-3">
+                            {{ talent.bio|truncatewords:20 }}
+                        </p>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                {% if talent.videos.exists %}
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">
+                                        {% trans "Video Portfolio" %}
+                                    </span>
+                                {% endif %}
+                                {% if talent.cv_file %}
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                                        {% trans "CV Available" %}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'talent_detail' talent.pk %}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                                {% trans "View Profile" %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-span-full text-center py-12">
+                    <div class="max-w-md mx-auto">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">{% trans "No talents found" %}</h3>
+                        <p class="text-gray-600">
+                            {% trans "Try adjusting your search criteria or browse all our amazing talents." %}
+                        </p>
+                        <a href="{% url 'talent_showcase' %}" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-block">
+                            {% trans "Clear Filters" %}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

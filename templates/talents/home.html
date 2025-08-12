@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30">
+                            <span class="text-sm font-medium text-blue-200">Premium Hospitality Talent Platform</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                            {% trans "Where Hospitality" %}
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                                {% trans "Dreams Come True" %}
+                            </span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-slate-300 max-w-2xl">
+                            {% trans "Connect with the world's most exclusive hotels and entertainment venues. Your talent deserves the spotlight it was meant for." %}
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="{% url 'register' %}" class="group bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold px-8 py-4 rounded-xl hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-yellow-500/25">
+                            {% trans "Start Your Journey" %}
+                        </a>
+                        <a href="{% url 'talent_showcase' %}" class="group border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                            {% trans "Explore Talent" %}
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="flex items-center space-x-8 pt-8">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">500+</div>
+                            <div class="text-sm text-slate-400">{% trans "Verified Talents" %}</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">150+</div>
+                            <div class="text-sm text-slate-400">{% trans "Partner Hotels" %}</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">25+</div>
+                            <div class="text-sm text-slate-400">{% trans "Countries" %}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        {% for talent in featured_talents|slice:":4" %}
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 {% cycle 'mt-8' '' %}">
+                                {% if talent.profile_image %}
+                                    <img src="{{ talent.profile_image.url }}" alt="{{ talent.user.get_full_name }}" class="w-full h-48 object-cover">
+                                {% else %}
+                                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600"></div>
+                                {% endif %}
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h3 class="text-white font-semibold text-sm">{{ talent.public_id }}</h3>
+                                            <p class="text-yellow-400 text-xs">{{ talent.get_role_display }}</p>
+                                        </div>
+                                        <div class="text-2xl">
+                                            {% if talent.role == 'dancer' %}💃
+                                            {% elif talent.role == 'acrobat' %}🤸
+                                            {% elif talent.role == 'performer' %}🎭
+                                            {% elif talent.role == 'musician' %}🎵
+                                            {% elif talent.role == 'entertainer' %}🎪
+                                            {% elif talent.role == 'bar_service' %}🍸
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Talents -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
+                    <span class="text-sm font-semibold text-blue-800">{% trans "Featured Professionals" %}</span>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+                    {% trans "Meet Our" %} <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">{% trans "Star Talents" %}</span>
+                </h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    {% trans "Discover exceptional professionals who are making waves in the hospitality and entertainment industry" %}
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for talent in featured_talents %}
+                    <div class="group relative {% if forloop.first %}md:col-span-2 md:row-span-2{% endif %}">
+                        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                            <div class="relative {% if forloop.first %}h-96{% else %}h-64{% endif %}">
+                                {% if talent.profile_image %}
+                                    <img src="{{ talent.profile_image.url }}" alt="{{ talent.user.get_full_name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                {% else %}
+                                    <div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600"></div>
+                                {% endif %}
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                
+                                <!-- Role Badge -->
+                                <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+                                    <span class="text-sm font-bold flex items-center">
+                                        <span class="mr-2 text-lg">
+                                            {% if talent.role == 'dancer' %}💃
+                                            {% elif talent.role == 'acrobat' %}🤸
+                                            {% elif talent.role == 'performer' %}🎭
+                                            {% elif talent.role == 'musician' %}🎵
+                                            {% elif talent.role == 'entertainer' %}🎪
+                                            {% elif talent.role == 'bar_service' %}🍸
+                                            {% endif %}
+                                        </span>
+                                        {{ talent.get_role_display }}
+                                    </span>
+                                </div>
+
+                                <!-- Content Overlay -->
+                                <div class="absolute bottom-6 left-6 right-6">
+                                    <h3 class="text-white font-bold mb-2 {% if forloop.first %}text-2xl{% else %}text-xl{% endif %}">
+                                        {{ talent.public_id }}
+                                    </h3>
+                                    <div class="flex items-center text-white/90 mb-3">
+                                        <span class="text-sm">{{ talent.city }}</span>
+                                        <span class="ml-4 text-sm">{{ talent.experience }}</span>
+                                    </div>
+                                    {% if forloop.first %}
+                                        <p class="text-white/90 text-sm line-clamp-2 mb-4">
+                                            {{ talent.bio }}
+                                        </p>
+                                    {% endif %}
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center text-yellow-400">
+                                            ★★★★★
+                                        </div>
+                                        <a href="{% url 'talent_detail' talent.pk %}" class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-colors">
+                                            {% trans "View Profile" %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="{% url 'talent_showcase' %}" class="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-blue-500/25">
+                    {% trans "Discover All Talents" %}
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <div class="space-y-8">
+                <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <span class="font-semibold">{% trans "Join the Elite" %}</span>
+                </div>
+                
+                <h2 class="text-4xl lg:text-6xl font-bold leading-tight">
+                    {% trans "Ready to Elevate Your" %}
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                        {% trans "Hospitality Career?" %}
+                    </span>
+                </h2>
+                
+                <p class="text-xl lg:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    {% trans "Join thousands of hospitality professionals who have transformed their careers through our exclusive platform. Your dream opportunity is waiting." %}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+                    <a href="{% url 'register' %}" class="group bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 font-bold px-10 py-5 rounded-xl hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 inline-flex items-center text-lg shadow-2xl hover:shadow-yellow-500/25">
+                        {% trans "Start Your Journey Today" %}
+                    </a>
+                    
+                    <div class="flex items-center space-x-4 text-slate-300">
+                        <div class="flex -space-x-2">
+                            {% for talent in featured_talents|slice:":3" %}
+                                {% if talent.profile_image %}
+                                    <img src="{{ talent.profile_image.url }}" alt="{{ talent.user.get_full_name }}" class="w-10 h-10 rounded-full border-2 border-white/20">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <span class="text-sm">
+                            <strong class="text-white">500+</strong> {% trans "professionals already joined" %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
