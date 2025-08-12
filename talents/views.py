@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.utils.translation import gettext as _
 from django.conf import settings
 from django.utils import translation
+from django.utils import timezone
 from .models import TalentProfile, TalentPhoto, TalentVideo, ProfileUpdateHistory
 from .forms import TalentProfileForm, TalentPhotoForm, TalentVideoForm
 from django.contrib.auth.models import User
@@ -338,67 +339,77 @@ def moderator_dashboard(request):
 
 def register(request):
     """User registration with support for personal and group registrations"""
-    if request.method == 'POST':
-        # Extract form data
-        registration_type = request.POST.get('registration_type', 'personal')
-        email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-        
-        # Validate passwords match
-        if password1 != password2:
-            messages.error(request, 'Passwords do not match.')
-            return render(request, 'registration/register.html', {'form_data': request.POST})
-        
-        # Check if user already exists
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'A user with this email already exists.')
-            return render(request, 'registration/register.html', {'form_data': request.POST})
-        
-        # Validate registration type specific fields
-        if registration_type == 'personal':
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
-            if not first_name or not last_name:
-                messages.error(request, 'First name and last name are required for personal registration.')
+    try:
+        if request.method == 'POST':
+            # Extract form data
+            registration_type = request.POST.get('registration_type', 'personal')
+            email = request.POST.get('email')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            
+            # Validate passwords match
+            if password1 != password2:
+                messages.error(request, 'Passwords do not match.')
                 return render(request, 'registration/register.html', {'form_data': request.POST})
-        else:  # group
-            group_name = request.POST.get('group_name')
-            if not group_name:
-                messages.error(request, 'Group name is required for group registration.')
+            
+            # Check if user already exists
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'A user with this email already exists.')
                 return render(request, 'registration/register.html', {'form_data': request.POST})
-            first_name = group_name
-            last_name = "Group"
+            
+            # Validate registration type specific fields
+            if registration_type == 'personal':
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                if not first_name or not last_name:
+                    messages.error(request, 'First name and last name are required for personal registration.')
+                    return render(request, 'registration/register.html', {'form_data': request.POST})
+            else:  # group
+                group_name = request.POST.get('group_name')
+                if not group_name:
+                    messages.error(request, 'Group name is required for group registration.')
+                    return render(request, 'registration/register.html', {'form_data': request.POST})
+                first_name = group_name
+                last_name = "Group"
+            
+            # Create user
+            user = User.objects.create_user(
+                username=email,
+                email=email,
+                password=password1,
+                first_name=first_name,
+                last_name=last_name
+            )
+            
+            # Create talent profile with registration type
+            talent_profile = TalentProfile.objects.create(
+                user=user,
+                registration_type=registration_type,
+                group_name=group_name if registration_type == 'group' else None,
+                email_private=email
+            )
+            
+            # Log user in
+            login(request, user)
+            
+            success_message = 'Account created successfully! Please complete your profile.'
+            if registration_type == 'group':
+                success_message = 'Group account created successfully! Please complete your group profile.'
+            
+            messages.success(request, success_message)
+            return redirect('dashboard')
         
-        # Create user
-        user = User.objects.create_user(
-            username=email,
-            email=email,
-            password=password1,
-            first_name=first_name,
-            last_name=last_name
-        )
+        context = {}
+        return render(request, 'registration/register.html', context)
+    except Exception as e:
+        # Log the error for debugging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error in register view: {str(e)}")
         
-        # Create talent profile with registration type
-        talent_profile = TalentProfile.objects.create(
-            user=user,
-            registration_type=registration_type,
-            group_name=group_name if registration_type == 'group' else None,
-            email_private=email
-        )
-        
-        # Log user in
-        login(request, user)
-        
-        success_message = 'Account created successfully! Please complete your profile.'
-        if registration_type == 'group':
-            success_message = 'Group account created successfully! Please complete your group profile.'
-        
-        messages.success(request, success_message)
-        return redirect('dashboard')
-    
-    context = {}
-    return render(request, 'registration/register.html', context)
+        # Return a simple error response
+        messages.error(request, 'An error occurred during registration. Please try again.')
+        return render(request, 'registration/register.html', {})
 
 def set_language(request):
     """Language switcher view"""

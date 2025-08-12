@@ -10,6 +10,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('moderator/', views.moderator_dashboard, name='moderator_dashboard'),
     path('auth/register/', views.register, name='register'),
+    path('auth/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('auth/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('set-language/', views.set_language, name='set_language'),
 ]
