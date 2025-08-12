@@ -1,0 +1,1 @@
+web: gunicorn tale_of_talents.wsgi --log-file - 
